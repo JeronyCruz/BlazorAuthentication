@@ -8,11 +8,12 @@
         <div class="card-body">
             <AuthorizeView>
                 <NotAuthorized>
-                    <span>You are not logged in. Please <a class="fw-bolder" href="/login">Click here</a> to login</span>
+                    <span>Por favor, Inicie sesi&oacute;n<a class="fw-bolder" href="/login"> Click here</a></span>
                 </NotAuthorized>
 
                 <Authorized>
-                    <span>Logged in as <b>@context.User.Identity.Name</b>. <a class="fw-bolder" href="/logout"></a> to logout.</span>
+                    <img src="/imagenes/hombre-saltando.png" style="max-height:5rem;" alt="Imagen no disponible..." />
+                    <span>Se inici&oacute; como <b>@context.User.Identity?.Name</b>, <a class="fw-bolder" href="/logout">Click aqu&iacute;</a> para cerrar sesi&oacute;n.</span>
                 </Authorized>
             </AuthorizeView>
         </div>
