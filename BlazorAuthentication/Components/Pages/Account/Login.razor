@@ -24,9 +24,12 @@
                 <ValidationMessage For="() => Model.Password"></ValidationMessage>
             </div>
 
-            <div class="mb-3">
-                <span class="text-danger">@errorMessage</span>
-            </div>
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-danger"role="alert">
+                    @errorMessage
+                </div>
+            }
 
             <div class="mb-3 d-grid gap-2">
                 <button class="btn btn-primary" type="submit">Login</button>
@@ -49,9 +52,11 @@
         var userAccount = context.UserAccounts
         .Where(x => x.UserName == Model.Username).FirstOrDefault();
 
+        errorMessage = null;
+
         if(userAccount is null || userAccount.Password != Model.Password)
         {
-            errorMessage = "Usuario o password invalido";
+            errorMessage = "Usuario o Contraseña invalido";
             return;
         }
         var clains = new List<Claim>
