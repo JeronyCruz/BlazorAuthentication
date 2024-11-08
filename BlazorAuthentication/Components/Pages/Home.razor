@@ -12,7 +12,16 @@
                 </NotAuthorized>
 
                 <Authorized>
-                    <img src="/imagenes/hombre-saltando.png" style="max-height:5rem;" alt="Imagen no disponible..." />
+                    @if (context.User.IsInRole("Admin"))
+                    {
+                        <img src="/imagenes/hombre-saltando.png" style="max-height:5rem;" alt="Imagen no disponible..." />
+                    }
+                    else if (context.User.IsInRole("User"))
+                    {
+                        <img src="/imagenes/grupo.png" style="max-height:5rem;" alt="Imagen no disponible..." />
+                    }
+
+                    
                     <span>Se inici&oacute; como <b>@context.User.Identity?.Name</b>, <a class="fw-bolder" href="/logout">Click aqu&iacute;</a> para cerrar sesi&oacute;n.</span>
                 </Authorized>
             </AuthorizeView>
